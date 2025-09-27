@@ -131,7 +131,15 @@ export default async function Dashboard() {
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
-                {farms.map((farm) => (
+                {farms.map((farm: {
+                  id: string | number;
+                  farm_name: string;
+                  location: string;
+                  owner: string;
+                  total_acreage: number;
+                  active_crops: string[];
+                  annual_yield: number;
+                }) => (
                   <tr key={farm.id} className="hover:bg-gray-50">
                     <td className="px-6 py-4 whitespace-nowrap">
                       <Link 

@@ -16,8 +16,9 @@ async function getFarmData(id: string) {
   return { farm, metrics };
 }
 
-export default async function FarmDetail({ params }: { params: { id: string } }) {
-  const { farm, metrics } = await getFarmData(params.id);
+export default async function FarmDetail({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const { farm, metrics } = await getFarmData(id);
 
   return (
     <div className="bg-gray-50 min-h-screen">
